@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import TodoForm from "./TodoForm";
 import Todoitem from "./TodoItem";
 
@@ -7,7 +9,8 @@ function List() {
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
-    setItems([...items, value]);
+    const newItem = { value, id: uuidv4() };
+    setItems([...items, newItem]);
     setValue("");
     e.preventDefault();
   };
@@ -16,7 +19,14 @@ function List() {
     setValue(e.target.value);
   };
 
-  const renderedTodos = items.map((item) => <Todoitem todo={item}/>);
+  const deleteItem = (id) => {
+    console.log(id)
+    setItems(items.filter((item) => item.id !== id));
+  };
+
+  const renderedTodos = items.map((item) => (
+    <Todoitem key={item.id} id={item.id} todo={item.value} deleteItem={deleteItem} />
+  ));
 
   return (
     <div>

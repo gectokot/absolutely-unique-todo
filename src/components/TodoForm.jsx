@@ -8,6 +8,7 @@ function TodoForm(props) {
         value={props.value}
         onChange={props.handleChange}
         placeholder="Enter Todo"
+        required
       />
     </form>
   );
