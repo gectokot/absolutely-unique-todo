@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import TodoForm from "./TodoForm";
+import Todoitem from "./TodoItem";
 
 function List() {
-  const [items, setItems] = useState(["placeholder", "placeholder 2"]);
+  const [items, setItems] = useState([]);
   const [value, setValue] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,7 +16,7 @@ function List() {
     setValue(e.target.value);
   };
 
-  const renderedTodos = items.map((item) => <li>{item}</li>);
+  const renderedTodos = items.map((item) => <Todoitem todo={item}/>);
 
   return (
     <div>
