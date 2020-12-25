@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TodoForm from "./TodoForm";
 
 function List() {
   const [items, setItems] = useState(["placeholder", "placeholder 2"]);
@@ -18,9 +19,11 @@ function List() {
 
   return (
     <div>
-      <form action="" onSubmit={handleSubmit}>
-        <input type="text" value={value} onChange={handleChange} />
-      </form>
+      <TodoForm
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        value={value}
+      />
       <ul>{renderedTodos}</ul>
     </div>
   );
