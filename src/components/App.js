@@ -1,8 +1,39 @@
 import React from "react";
 import List from "./List";
+import styled, { createGlobalStyle } from "styled-components";
+
+const Wrapper = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  padding-top: 25%;
+  width: 400px;
+`;
+
+const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+  * {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+`;
 
 function App() {
-  return <List />;
+  return (
+    <Wrapper>
+      <GlobalStyle />
+      <List />
+    </Wrapper>
+  );
 }
 
 export default App;

@@ -1,8 +1,18 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import styled from 'styled-components'
 
 import TodoForm from "./TodoForm";
 import Todoitem from "./TodoItem";
+
+const TodoList = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+`
+
+
+
 
 function List() {
   const [items, setItems] = useState([]);
@@ -20,7 +30,6 @@ function List() {
   };
 
   const deleteItem = (id) => {
-    console.log(id)
     setItems(items.filter((item) => item.id !== id));
   };
 
@@ -35,7 +44,7 @@ function List() {
         handleChange={handleChange}
         value={value}
       />
-      <ul>{renderedTodos}</ul>
+      <TodoList>{renderedTodos}</TodoList>
     </div>
   );
 }
