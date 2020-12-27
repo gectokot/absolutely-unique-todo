@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 import TodoForm from "./TodoForm";
 import Todoitem from "./TodoItem";
@@ -9,14 +9,20 @@ const TodoList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
-`
-
-
-
+`;
 
 function List() {
   const [items, setItems] = useState([]);
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (localStorage.length !== 0)
+      setItems(JSON.parse(localStorage.getItem("items")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   const handleSubmit = (e) => {
     const newItem = { value, id: uuidv4() };
@@ -34,7 +40,12 @@ function List() {
   };
 
   const renderedTodos = items.map((item) => (
-    <Todoitem key={item.id} id={item.id} todo={item.value} deleteItem={deleteItem} />
+    <Todoitem
+      key={item.id}
+      id={item.id}
+      todo={item.value}
+      deleteItem={deleteItem}
+    />
   ));
 
   return (

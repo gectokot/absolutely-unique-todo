@@ -29,17 +29,12 @@ const DeleteButton = styled.span`
   }
 `;
 
-const DeleteIcon = styled(Trash)`
-  height: 80%;
-  text-align: center;
-`;
-
 function TodoItem(props) {
   return (
     <Todo>
       {props.todo}
       <DeleteButton>
-        <DeleteIcon size="32" onClick={() => props.deleteItem(props.id)} />
+        <Trash size="32" onClick={() => props.deleteItem(props.id)} />
       </DeleteButton>
     </Todo>
   );
