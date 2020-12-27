@@ -7,7 +7,7 @@ const Input = styled.input`
   background: #1e3b72;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 3px 3px 0 0;
   width: 100%;
   ::placeholder {
     color: white;

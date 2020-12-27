@@ -17,7 +17,7 @@ const Todo = styled.li`
 
 const DeleteButton = styled.span`
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 3px 0 0 3px;
   padding-top: 5px;
   background-color: red;
   color: white;
