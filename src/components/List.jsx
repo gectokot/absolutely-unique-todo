@@ -5,11 +5,18 @@ import styled from "styled-components";
 import TodoForm from "./TodoForm";
 import Todoitem from "./TodoItem";
 
+const ShadowyWrapper = styled.div`
+  box-shadow: 2px 3px 3px rgba(0,0,0, 0.3);
+`
+
 const TodoList = styled.ul`
   margin: 0;
   padding: 0;
   list-style: none;
+  min-height: 500px;
+  background-color: #e6e6fa;
 `;
+
 
 function List() {
   const [items, setItems] = useState([]);
@@ -23,6 +30,7 @@ function List() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
+
 
   const handleSubmit = (e) => {
     const newItem = { value, id: uuidv4() };
@@ -49,14 +57,14 @@ function List() {
   ));
 
   return (
-    <div>
+    <ShadowyWrapper>
       <TodoForm
         handleSubmit={handleSubmit}
         handleChange={handleChange}
         value={value}
       />
       <TodoList>{renderedTodos}</TodoList>
-    </div>
+    </ShadowyWrapper>
   );
 }
 
