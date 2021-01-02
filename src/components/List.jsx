@@ -51,6 +51,11 @@ function List() {
     setEditedText(e.target.value);
   };
 
+  //sets editexText state to items's value on click
+  const changeState = e => {
+    setEditedText(e.target.value)
+  }
+
   const submitEdited = (id) => {
     console.log(id);
     const editedItem = { value: editedText, id: id };
@@ -68,6 +73,7 @@ function List() {
       deleteItem={deleteItem}
       handleEditing={handleEditing}
       submitEdited={submitEdited}
+      changeState={changeState}
     />
   ));
 

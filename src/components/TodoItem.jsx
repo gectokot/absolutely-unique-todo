@@ -58,6 +58,8 @@ function TodoItem(props) {
           defaultValue={props.todo}
           value={props.editedText}
           onChange={props.handleEditing}
+          onClick={props.changeState}
+          onBlur={sumbitAndDontReload}
         />
       </form>
       <DeleteButton>
