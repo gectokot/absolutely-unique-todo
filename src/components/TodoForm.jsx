@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
+  outline-width: 0;
   font-size: 18px;
   padding: 10px;
   background: #1e3b72;

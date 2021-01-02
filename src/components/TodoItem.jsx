@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Trash } from "@styled-icons/boxicons-regular/Trash";
 
@@ -13,6 +13,18 @@ const Todo = styled.li`
   display: flex;
   justify-content: space-between;
   overflow-wrap: anywhere;
+`;
+
+const Item = styled.input`
+  outline-width: 0;
+  font-size: 18px;
+  background: #e6e6fa;
+  border: none;
+  width: 100%;
+  &::placeholder {
+    font-size: 18px;
+    color: black;
+  }
 `;
 
 const DeleteButton = styled.span`
@@ -30,10 +42,24 @@ const DeleteButton = styled.span`
   }
 `;
 
+
+
 function TodoItem(props) {
+  const sumbitAndDontReload = (e) => {
+    e.preventDefault();
+    props.submitEdited(props.id);
+  }
+
   return (
     <Todo>
-      {props.todo}
+      <form action="" onSubmit={sumbitAndDontReload}>
+        <Item
+          type="text"
+          defaultValue={props.todo}
+          value={props.editedText}
+          onChange={props.handleEditing}
+        />
+      </form>
       <DeleteButton>
         <Trash size="32" onClick={() => props.deleteItem(props.id)} />
       </DeleteButton>

@@ -6,8 +6,8 @@ import TodoForm from "./TodoForm";
 import Todoitem from "./TodoItem";
 
 const ShadowyWrapper = styled.div`
-  box-shadow: 2px 3px 3px rgba(0,0,0, 0.3);
-`
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.3);
+`;
 
 const TodoList = styled.ul`
   margin: 0;
@@ -17,11 +17,12 @@ const TodoList = styled.ul`
   background-color: #e6e6fa;
 `;
 
-
 function List() {
   const [items, setItems] = useState([]);
   const [value, setValue] = useState("");
+  const [editedText, setEditedText] = useState("");
 
+  //local storage
   useEffect(() => {
     if (localStorage.length !== 0)
       setItems(JSON.parse(localStorage.getItem("items")));
@@ -30,7 +31,6 @@ function List() {
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
-
 
   const handleSubmit = (e) => {
     const newItem = { value, id: uuidv4() };
@@ -47,12 +47,27 @@ function List() {
     setItems(items.filter((item) => item.id !== id));
   };
 
+  const handleEditing = (e) => {
+    setEditedText(e.target.value);
+  };
+
+  const submitEdited = (id) => {
+    console.log(id);
+    const editedItem = { value: editedText, id: id };
+    console.log(editedItem);
+    setItems(
+      items.map((item) => (item.id === editedItem.id ? editedItem : item))
+    );
+  };
+
   const renderedTodos = items.map((item) => (
     <Todoitem
       key={item.id}
       id={item.id}
       todo={item.value}
       deleteItem={deleteItem}
+      handleEditing={handleEditing}
+      submitEdited={submitEdited}
     />
   ));
 
