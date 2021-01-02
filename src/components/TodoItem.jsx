@@ -13,6 +13,11 @@ const Todo = styled.li`
   display: flex;
   justify-content: space-between;
   overflow-wrap: anywhere;
+  transition: background 0.2s;
+  &:hover{
+    background: #cfcfff;
+  }
+
 `;
 
 const Item = styled.input`
@@ -20,10 +25,10 @@ const Item = styled.input`
   font-size: 18px;
   background: #e6e6fa;
   border: none;
-  width: 100%;
-  &::placeholder {
-    font-size: 18px;
-    color: black;
+  width: 350px;
+  transition: background 0.2s;
+  ${Todo}:hover & {
+    background: #cfcfff;
   }
 `;
 
@@ -42,13 +47,11 @@ const DeleteButton = styled.span`
   }
 `;
 
-
-
 function TodoItem(props) {
   const sumbitAndDontReload = (e) => {
     e.preventDefault();
     props.submitEdited(props.id);
-  }
+  };
 
   return (
     <Todo>
@@ -63,7 +66,7 @@ function TodoItem(props) {
         />
       </form>
       <DeleteButton>
-        <Trash size="32" onClick={() => props.deleteItem(props.id)} />
+        <Trash size="32" onClick={() => props.deleteItem(props.id)} style={{alignSelf: 'center'}}  />
       </DeleteButton>
     </Todo>
   );

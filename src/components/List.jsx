@@ -18,7 +18,7 @@ const TodoList = styled.ul`
 `;
 
 function List() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([{value: "You can edit a Todo by clicking on it", id: 1},]);
   const [value, setValue] = useState("");
   const [editedText, setEditedText] = useState("");
 
@@ -27,7 +27,6 @@ function List() {
     if (localStorage.length !== 0)
       setItems(JSON.parse(localStorage.getItem("items")));
   }, []);
-
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
@@ -51,7 +50,7 @@ function List() {
     setEditedText(e.target.value);
   };
 
-  //sets editexText state to items's value on click
+  //handleChange but for editing
   const changeState = e => {
     setEditedText(e.target.value)
   }
