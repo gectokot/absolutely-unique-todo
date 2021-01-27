@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { Trash } from "@styled-icons/boxicons-regular/Trash";
 
@@ -17,7 +17,6 @@ const Todo = styled.li`
   &:hover{
     background: #cfcfff;
   }
-
 `;
 
 const Item = styled.input`
